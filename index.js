@@ -28,11 +28,10 @@ function findColors(contents) {
 }
 
 function generateInnerHTML(colors) {
-	var html;
+	var html = '';
 	colors.forEach((color) => {
 		html += `<div class="colorGroup" style="display: inline-block;">
 			<div class="colorGroup__color" style="width: 50px; height: 50px; background-color: #${color.hex};"></div>
-			<div class="colorGroup__name">${color.name}</div>
 		</div>`;
 	});
 	return html;
