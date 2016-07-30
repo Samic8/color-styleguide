@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "commander": "^2.9.0",
-    "fs": "0.0.2"
+    "fs": "0.0.2",
+    "sc-color": "^0.4.0"
   }
 }

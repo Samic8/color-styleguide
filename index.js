@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 var program = require('commander');
 var fs = require('fs');
+var sc_color = require("sc-color");
 
 program.arguments('<file>')
 	.action(function(file) {
@@ -9,7 +10,9 @@ program.arguments('<file>')
 	.parse(process.argv);
 
 function processFile(err, contents) {
-	var innerHtml = generateInnerHTML(findColors(contents));
+	var colors = findColors(contents);
+	var sortedColors = sortColors(colors);
+	var innerHtml = generateInnerHTML(sortedColors);
 	var html = generateOuterHTML(innerHtml);
 	writeToFile(html);
 }
@@ -25,6 +28,13 @@ function findColors(contents) {
 		});
 	}
 	return found;
+}
+
+function sortColors(colors){
+	var sorted = colors.sort(function(colorA, colorB) {
+	    return sc_color('#' + colorA.hex).hue() - sc_color('#' + colorB.hex).hue();
+	});
+	return sorted;
 }
 
 function generateInnerHTML(colors) {
@@ -51,3 +61,5 @@ function writeToFile(content) {
 		if (err) throw err;
 	});
 }
+
+var color = require("sc-color");
