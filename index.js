@@ -11,17 +11,13 @@ program.arguments('<file>')
 function processFile(err, contents) {
 	var innerHtml = generateInnerHTML(findColors(contents));
 	var html = generateOuterHTML(innerHtml);
-
-	fs.writeFile('colors.html', html, (err) => {
-		if (err) throw err;
-	});
+	writeToFile(html);
 }
 
 function findColors(contents) {
 	var regex = /\$color-(.*)(?:\:)(?: |)(?:#)(.*)(?:\;)/g;
-	var matches;
 	var found = [];
-
+	var matches;
 	while( matches = regex.exec(contents) ) {
 		found.push({
 			name: matches[1],
@@ -49,4 +45,10 @@ function generateOuterHTML(innerHTML) {
 			<body>${innerHTML}</body>
 		</html>
 	`;
+}
+
+function writeToFile(content) {
+	fs.writeFile('colors.html', content, (err) => {
+		if (err) throw err;
+	});
 }
