@@ -61,5 +61,3 @@ function writeToFile(content) {
 		if (err) throw err;
 	});
 }
-
-var color = require("sc-color");
