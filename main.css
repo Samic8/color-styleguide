@@ -3,10 +3,12 @@
 	--page-large: 700px;
 	--page-medium: 500px;
 	--page-small: 300px;
-	--gutter-size: 2px;
+	--gutter-size: 0px;
 }
 
 .colorlist {
+	display: flex;
+	flex-wrap: wrap;
 	max-width: var(--page-width);
 	width: 100%;
 	margin: 0 auto;
@@ -35,14 +37,17 @@
 
 .colorlist__color:hover::after {
 	--expand-percentage: -50%;
-	
+
 	transition: all 0.2s ease-out;
+	transition-delay: 0.2s;
 	z-index: 2;
 	top: var(--expand-percentage);
 	right: var(--expand-percentage);
 	bottom: var(--expand-percentage);
 	left: var(--expand-percentage);
 	cursor: pointer;
+	border: 3px solid black;
+	border-radius: 3px;
 }
 
 @media screen and (min-width: 700px) {
