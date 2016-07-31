@@ -9,7 +9,15 @@
 		<h2>Colors</h2>
 		<ul class="colorlist">
 			{{#colors}}
-				<li class="colorlist__color" style="color: #{{hex}};"></li>
+				<li class="colorlist__colorGroup" tabindex="0">
+					<div class="colorlist__colorGroup__modal">
+						<div class="colorlist__colorGroup__color" style="color: #{{hex}};"></div>
+						<ul class="colorlist__colorGroup__stats">
+							<li><b>Color name:</b> {{name}}</li>
+							<li><b>Hex color code:</b> #{{hex}}</li>
+						</ul>
+					</div>
+				</li>
 			{{/colors}}
 		</ul>
 	</div>
