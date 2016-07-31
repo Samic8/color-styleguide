@@ -1,17 +1,31 @@
 :root {
-	--page-width: 1000px;
+	--page-width: 50em;
 	--page-large: 700px;
 	--page-medium: 500px;
 	--page-small: 300px;
 	--gutter-size: 0px;
 }
 
-.colorlist {
-	display: flex;
-	flex-wrap: wrap;
+body {
+	font-family: "Helvetica", "Arial", sans-serif;
+	color: #555;
+}
+
+h2 {
+	margin-top: 1em;
+	padding-top: 1em;
+	color: #333;
+}
+
+.page-wrapper {
 	max-width: var(--page-width);
 	width: 100%;
 	margin: 0 auto;
+}
+
+.colorlist {
+	display: flex;
+	flex-wrap: wrap;
 	list-style: none;
 	padding: 0;
 }

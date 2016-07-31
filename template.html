@@ -5,6 +5,13 @@
 	<link rel="stylesheet" type="text/css" href="{{appPath}}/main.css">
 </head>
 <body>
-	<ul class="colorlist">{{#colors}}<li class="colorlist__color" style="color: #{{hex}};"></li>{{/colors}}</ul>
+	<div class="page-wrapper">
+		<h2>Colors</h2>
+		<ul class="colorlist">
+			{{#colors}}
+				<li class="colorlist__color" style="color: #{{hex}};"></li>
+			{{/colors}}
+		</ul>
+	</div>
 </body>
 </html>
