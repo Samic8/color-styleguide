@@ -51,7 +51,7 @@ function generateHTML(data) {
 }
 
 function writeToFile(content) {
-	fs.writeFile('colors.html', content, (err) => {
+	fs.writeFile('colors.html', content, function (err) {
 		if (err) throw err;
 	});
 }
