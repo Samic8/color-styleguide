@@ -1,20 +1,56 @@
 :root {
-	--color-size: 50px;
+	--page-width: 1000px;
+	--page-large: 700px;
+	--page-medium: 500px;
+	--page-small: 300px;
+	--gutter-size: 2px;
 }
 
 .colorlist {
+	max-width: var(--page-width);
+	width: 100%;
+	margin: 0 auto;
 	list-style: none;
 	padding: 0;
 }
 
 .colorlist__color {
 	display: inline-block;
+	box-sizing: border-box;
+	height: 50px;
+	margin: var(--gutter-size);
 }
 
 .colorlist__color::after {
 	content: '';
 	display: inline-block;
 	background-color: currentColor;
-	width: var(--color-size);
-	height: var(--color-size);
+	width: 100%;
+	height: 100%;
+}
+
+@media screen and (min-width: 700px) {
+	.colorlist__color {
+		--per-row: 12;
+		--size: calc( (100% / var(--per-row)) - (var(--gutter-size) * 2) );
+		width: var(--size);
+	}
+}
+
+@media screen and (max-width: 700px) and (min-width: 500px) {
+	.colorlist__color {
+		--per-row: 8;
+		--size: calc( (100% / var(--per-row)) - (var(--gutter-size) * 2) );
+		width: var(--size);
+		margin: var(--gutter-size);
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.colorlist__color {
+		--per-row: 4;
+		--size: calc( (100% / var(--per-row)) - (var(--gutter-size) * 2) );
+		width: var(--size);
+		margin: var(--gutter-size);
+	}
 }
