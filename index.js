@@ -2,6 +2,9 @@
 var program = require('commander');
 var fs = require('fs');
 var sc_color = require("sc-color");
+var Handlebars = require('handlebars');
+var path = require('path');
+var appPath = path.dirname(require.main.filename);
 
 program.arguments('<file>')
 	.action(function(file) {
@@ -12,8 +15,11 @@ program.arguments('<file>')
 function processFile(err, contents) {
 	var colors = findColors(contents);
 	var sortedColors = sortColors(colors);
-	var innerHtml = generateInnerHTML(sortedColors);
-	var html = generateOuterHTML(innerHtml);
+	var data = { 
+		colors: sortedColors,
+		appPath: appPath
+	};
+	var html = generateHTML(data);
 	writeToFile(html);
 }
 
@@ -37,23 +43,11 @@ function sortColors(colors){
 	return sorted;
 }
 
-function generateInnerHTML(colors) {
-	var html = '';
-	colors.forEach((color) => {
-		html += `<div class="colorGroup" style="display: inline-block;">
-			<div class="colorGroup__color" style="width: 50px; height: 50px; background-color: #${color.hex};"></div>
-		</div>`;
-	});
-	return html;
-}
-
-function generateOuterHTML(innerHTML) {
-	return `
-		<html>
-			<head></head>
-			<body>${innerHTML}</body>
-		</html>
-	`;
+function generateHTML(data) {
+	var filePath = appPath + '/template.html';
+	var contents = fs.readFileSync(filePath, 'utf8')
+	var template = Handlebars.compile(contents);
+	return template(data);
 }
 
 function writeToFile(content) {

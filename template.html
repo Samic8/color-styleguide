@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Color styleguide</title>
+	<link rel="stylesheet" type="text/css" href="{{appPath}}/main.css">
+</head>
+<body>
+	<ul class="colorlist">
+		{{#colors}}
+			<li class="colorlist__color" style="color: #{{hex}};"></li>
+		{{/colors}}
+	</ul>
+</body>
+</html>

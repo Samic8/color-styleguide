@@ -1,0 +1,20 @@
+:root {
+	--color-size: 50px;
+}
+
+.colorlist {
+	list-style: none;
+	padding: 0;
+}
+
+.colorlist__color {
+	display: inline-block;
+}
+
+.colorlist__color::after {
+	content: '';
+	display: inline-block;
+	background-color: currentColor;
+	width: var(--color-size);
+	height: var(--color-size);
+}
